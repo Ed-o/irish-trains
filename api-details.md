@@ -1,7 +1,7 @@
 # Get station list :
 http://api.irishrail.ie/realtime/realtime.asmx/getAllStationsXML
 
-#  All current trains
+# All current trains
 http://api.irishrail.ie/realtime/realtime.asmx/getCurrentTrainsXML
 
 # Trains for a station
