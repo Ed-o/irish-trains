@@ -2,6 +2,7 @@
 http://api.irishrail.ie/realtime/realtime.asmx/getAllStationsXML
 
 format :
+
 	<ArrayOfObjStation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://api.irishrail.ie/realtime/">
 	<objStation>
 	<StationDesc>Belfast Central</StationDesc>
@@ -17,6 +18,7 @@ format :
 http://api.irishrail.ie/realtime/realtime.asmx/getCurrentTrainsXML
 
 format :
+
 	<ArrayOfObjTrainPositions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://api.irishrail.ie/realtime/">
 	<objTrainPositions>
 	<TrainStatus>N</TrainStatus>
