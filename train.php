@@ -1,31 +1,4 @@
 <?php
-
-#and train movement :
-
-#http://api.irishrail.ie/realtime/realtime.asmx/getTrainMovementsXML?TrainId=e109&TrainDate=21%20dec%202011
-
-#<ArrayOfObjTrainMovements xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://api.irishrail.ie/realtime/">
-#<objTrainMovements>
-#<TrainCode>E109</TrainCode>
-#<TrainDate>21 Dec 2011</TrainDate>
-#<LocationCode>MHIDE</LocationCode>
-#<LocationFullName>Malahide</LocationFullName>
-#<LocationOrder>1</LocationOrder>
-#<LocationType>O</LocationType>
-#<TrainOrigin>Malahide</TrainOrigin>
-#<TrainDestination>Greystones</TrainDestination>
-#<ScheduledArrival>00:00:00</ScheduledArrival>
-#<ScheduledDeparture>10:30:00</ScheduledDeparture>
-#<ExpectedArrival>00:00:00</ExpectedArrival>
-#<ExpectedDeparture>10:30:00</ExpectedDeparture>
-#<Arrival>10:19:24</Arrival>
-#<Departure>10:30:24</Departure>
-#<AutoArrival>1</AutoArrival>
-#<AutoDepart>1</AutoDepart>
-#<StopType>-</StopType>
-#</objTrainMovements>
-#
-
 include_once "header.php";
 
 $trainid = $_GET["trainid"];

@@ -1,34 +1,4 @@
 <?php
-
-# http://api.irishrail.ie/realtime/realtime.asmx/getStationDataByCodeXML_WithNumMins?StationCode=mhide&NumMins=20
-
-# format :
-
-#<ArrayOfObjStationData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://api.irishrail.ie/realtime/">
-#<objStationData>
-#<Servertime>2014-11-25T17:19:58.773</Servertime>
-#<Traincode>E821</Traincode>
-#<Stationfullname>Malahide</Stationfullname>
-#<Stationcode>MHIDE</Stationcode>
-#<Querytime>17:19:58</Querytime>
-#<Traindate>25 Nov 2014</Traindate>
-#<Origin>Greystones</Origin>
-#<Destination>Malahide</Destination>
-#<Origintime>16:00</Origintime>
-#<Destinationtime>17:20</Destinationtime>
-#<Status/>
-#<Lastlocation>Arrived Malahide</Lastlocation>
-#<Duein>2</Duein>
-#<Late>1</Late>
-#<Exparrival>17:21</Exparrival>
-#<Expdepart>00:00</Expdepart>
-#<Scharrival>17:20</Scharrival>
-#<Schdepart>00:00</Schdepart>
-#<Direction>Northbound</Direction>
-#<Traintype>DART</Traintype>
-#<Locationtype>D</Locationtype>
-#</objStationData>
-
 include_once "header.php";
 
 $stnid = $_GET["from"];
@@ -140,11 +110,16 @@ else
   }
 }
 
-?>
+echo "<br />Options : ";
+echo "<a href=\"/\">Menu</a> | ";
+echo "(<a href=\"/show.php?from=${stnid}&to=${stnto}&dir=N&min=${min}&submit=submit\">North</a> | ";
+echo "<a href=\"/show.php?from=${stnid}&to=${stnto}&dir=S&min=${min}&submit=submit\">South</a> | ";
+echo "<a href=\"/show.php?from=${stnid}&to=${stnto}&dir=&min=${min}&submit=submit\">Both</a>) ";
 
+echo "(<a href=\"/show.php?from=${stnid}&to=${stnto}&dir=${dir}&min=15&submit=submit\">15m</a> | ";
+echo "<a href=\"/show.php?from=${stnid}&to=${stnto}&dir=${dir}&min=60&submit=submit\">60m</a> | ";
+echo "<a href=\"/show.php?from=${stnid}&to=${stnto}&dir=${dir}&min=90&submit=submit\">90m</a>)";
+echo "<br /><br />";
 
-
-
-<?php
 include_once "footer.php";
 ?>

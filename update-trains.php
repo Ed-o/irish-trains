@@ -1,23 +1,4 @@
 <?php
-
-# Get Current Trains - usage http://api.irishrail.ie/realtime/realtime.asmx/getCurrentTrainsXML 
-
-# format :
-#	<ArrayOfObjTrainPositions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://api.irishrail.ie/realtime/">
-#	<objTrainPositions>
-#	<TrainStatus>N</TrainStatus>
-#	<TrainLatitude>51.9018</TrainLatitude>
-#	<TrainLongitude>-8.4582</TrainLongitude>
-#	<TrainCode>A225</TrainCode>
-#	<TrainDate>25 Nov 2014</TrainDate>
-#	<PublicMessage>
-#	A225\nCork to Dublin Heuston\nExpected Departure 17:20
-#	</PublicMessage>
-#	<Direction>To Dublin Heuston</Direction>
-#	</objTrainPositions>
-# ...
-
-
 include_once "header.php";
 
 $url = 'http://api.irishrail.ie/realtime/realtime.asmx/getCurrentTrainsXML';
