@@ -72,16 +72,17 @@ else
 
 	$valid = 1;
 
-	if ($dir != "") { 
-		if (($dir == "N") and ($Direction == "Southbound")) { $valid = 0; }
-		if (($dir == "S") and ($Direction == "Northbound")) { $valid = 0; }
-	}
-
 	if ( $Direction == "") { $Direction="<none>"; }
 
         # Bug fixes for bad data :
         if ( $Direction == "To Drogheda") { $Direction="Northbound"; }
+        if ( $Direction == "To Dundalk") { $Direction="Northbound"; }
         if ( $Direction == "To Grand Canal Dock") { $Direction="Southbound"; }
+
+        if ($dir != "") {
+                if (($dir == "N") and ($Direction == "Southbound")) { $valid = 0; }
+                if (($dir == "S") and ($Direction == "Northbound")) { $valid = 0; }
+        }
 
 	if ($Lastlocation != "" ) { $Lastlocation = " : Last location - $Lastlocation"; }
 
