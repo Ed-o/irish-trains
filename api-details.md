@@ -27,7 +27,7 @@ format :
 	<TrainCode>A225</TrainCode>
 	<TrainDate>25 Nov 2014</TrainDate>
 	<PublicMessage>
-A225\nCork to Dublin Heuston\nExpected Departure 17:20
+	A225\nCork to Dublin Heuston\nExpected Departure 17:20
 	</PublicMessage>
 	<Direction>To Dublin Heuston</Direction>
 	</objTrainPositions>
