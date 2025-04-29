@@ -79,6 +79,10 @@ else
 
 	if ( $Direction == "") { $Direction="<none>"; }
 
+        # Bug fixes for bad data :
+        if ( $Direction == "To Drogheda") { $Direction="Northbound"; }
+        if ( $Direction == "To Grand Canal Dock") { $Direction="Southbound"; }
+
 	if ($Lastlocation != "" ) { $Lastlocation = " : Last location - $Lastlocation"; }
 
 	if ( $Late != "" ) { $Late = "[+$Late]"; }
