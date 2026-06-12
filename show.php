@@ -1,6 +1,4 @@
 <?php
-include_once "header.php";
-
 $stnid = $_GET["from"];
 $stnid = filter_var($stnid, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
 $stnid = filter_var($stnid, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
@@ -16,6 +14,17 @@ $dir = filter_var($dir, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
 $min = $_GET["min"];
 $min = filter_var($min, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
 $min = filter_var($min, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+
+$update = $_GET["update"];
+$update = filter_var($update, FILTER_VALIDATE_INT, array("options" => array("min_range" => 1)));
+
+$page_refresh_seconds = 0;
+if ($update !== false) {
+	$page_refresh_seconds = $update * 60;
+}
+
+include_once "header.php";
+
 echo "Seraching for trains :";
 if ($stnid != "") { echo " from Station : $stnid";}
 if ($stnto != "") { echo " going to Station : $stnto";}
@@ -28,6 +37,8 @@ if (($stnid == "") and ($stnto != "")) { // we need to swap the trains round
 
 
 if ($min== "") { $min="30"; }
+
+$selectedmin = $min;
 
 if ($stnid != "") {
 	$fromurl = 'http://api.irishrail.ie/realtime/realtime.asmx/getStationDataByCodeXML_WithNumMins?StationCode=' . $stnid . '&NumMins=' .$min;
@@ -117,13 +128,18 @@ else
 
 echo "<br />Options : ";
 echo "<a href=\"/\">Menu</a> | ";
-echo "(<a href=\"/show.php?from=${stnid}&to=${stnto}&dir=N&min=${min}&submit=submit\">North</a> | ";
-echo "<a href=\"/show.php?from=${stnid}&to=${stnto}&dir=S&min=${min}&submit=submit\">South</a> | ";
-echo "<a href=\"/show.php?from=${stnid}&to=${stnto}&dir=&min=${min}&submit=submit\">Both</a>) ";
+$updateparam = "";
+if ($update !== false) {
+	$updateparam = "&update={$update}";
+}
 
-echo "(<a href=\"/show.php?from=${stnid}&to=${stnto}&dir=${dir}&min=15&submit=submit\">15m</a> | ";
-echo "<a href=\"/show.php?from=${stnid}&to=${stnto}&dir=${dir}&min=60&submit=submit\">60m</a> | ";
-echo "<a href=\"/show.php?from=${stnid}&to=${stnto}&dir=${dir}&min=90&submit=submit\">90m</a>)";
+echo "(<a href=\"/show.php?from={$stnid}&to={$stnto}&dir=N&min={$selectedmin}{$updateparam}&submit=submit\">North</a> | ";
+echo "<a href=\"/show.php?from={$stnid}&to={$stnto}&dir=S&min={$selectedmin}{$updateparam}&submit=submit\">South</a> | ";
+echo "<a href=\"/show.php?from={$stnid}&to={$stnto}&dir=&min={$selectedmin}{$updateparam}&submit=submit\">Both</a>) ";
+
+echo "(<a href=\"/show.php?from={$stnid}&to={$stnto}&dir={$dir}&min=15{$updateparam}&submit=submit\">15m</a> | ";
+echo "<a href=\"/show.php?from={$stnid}&to={$stnto}&dir={$dir}&min=60{$updateparam}&submit=submit\">60m</a> | ";
+echo "<a href=\"/show.php?from={$stnid}&to={$stnto}&dir={$dir}&min=90{$updateparam}&submit=submit\">90m</a>)";
 echo "<br /><br />";
 
 include_once "footer.php";
